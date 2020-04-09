@@ -58,15 +58,16 @@ public class MarathonCorrect {
 		
 		//String[] participant={"leo", "kiki", "eden"};
 		//String[] completion={"eden", "kiki"};
+		//정답: "leo"
 		
 		String[] participant={"marina", "josipa", "nikola", "vinko", "filipa"};
 		String[] completion={"josipa", "filipa", "marina", "nikola"};
-		
+		//정답:vinko
 		//String[] participant= {"qw","we","er","qw"};
 		//String[] completion= {"er","qw","er"};
-		
-		//정답: "leo"
+		//정답:qw
 		System.out.println(solution(participant,completion ));
+		
 	}
 
 }
