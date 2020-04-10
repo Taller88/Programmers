@@ -10,28 +10,47 @@ public class Dart {
 	      int result=0;
 	      
 	 for(int i=0; i<dartResult.length(); i++) {
-		 if(dartResult.charAt(i)>=48 && dartResult.charAt(i)<=57) {//숫자 찾기
-			scores[index]=dartResult.charAt(i)-48;
-		
+		 char one=dartResult.charAt(i);
+		 if(one>=48 && one<=57) {//숫자 찾기
+			 if(dartResult.charAt(i)=='0' && i!=0 && dartResult.charAt(i-1)=='1'){// 약간 꼼수처럼 보이긴한데 통과.. -> 10찾기
+				 //i !=0 조건을 추가한건 첫번째 글자가 0일때 charAt에서 OutOfIndexArray방지하고자 
+				 scores[index]=10;
+				System.out.println("scores[index]1-2="+scores[index]);
+					 
+				}else {
+					 scores[index]=one-48;
+						System.out.println("scores[index]2="+scores[index]);
+						 
+					}
+		 }else if(one=='S') {
+			 scores[index]=(scores[index])*1;
+				System.out.println("scores[index]3="+scores[index]);
+				
 			 index++;
-			 if(index==3) {
-				 index=2;
-			 }
-		 }else if(dartResult.charAt(i)=='S') {
-			 scores[index]=(dartResult.charAt(i-1)-48)*1;
-		
 				 
-		 }else if(dartResult.charAt(i)=='D') {
-			 scores[index]=(dartResult.charAt(i-1)-48)*(dartResult.charAt(i-1)-48);
+		 }else if(one=='D') {
+			 System.out.println("scores[index]4="+scores[index]);
+
+			 scores[index]=(scores[index])*(scores[index]);
+			 
+			 System.out.println("scores[index]5="+scores[index]);
+
+			 index++;
+		 }else if(one=='T') {
+			 scores[index]=(scores[index])*(scores[index])*(scores[index]);
+
+			 index++;
+		 }else if(one=='*') {
+
+			if(index==1) {
+				 bonus[index-1]*=2;
+			}else {
+			 bonus[index-1]*=2;
+			 bonus[index-2]*=2;
+			}
+		 }else if(one=='#') {
 			
-		 }else if(dartResult.charAt(i)=='T') {
-			 scores[index]=(dartResult.charAt(i-1)-48)*(dartResult.charAt(i-1)-48)*(dartResult.charAt(i-1)-48);
-			
-		 }else if(dartResult.charAt(i)=='*') {
-			 bonus[index]=2;
-			 bonus[index-1]=2;
-		 }else if(dartResult.charAt(i)=='#') {
-			 bonus[index]=-1;
+			 bonus[index-1]*=-1;
 		 }
 		
 		 
@@ -43,14 +62,19 @@ public class Dart {
 		 System.out.println(scores[i]+"*"+bonus[i]+"="+scores[i]*bonus[i]);
 		 
 	 }
+	 
 	      
 	      return  result;
 	  }
 	 
 	public static void main(String[] args) {
-		String dartResult="1S*1D*3T*";
+//		String dartResult="1D2S0T";
+//		String dartResult="1D2S#10S";
+		String dartResult="0D#2S*3S";
+//		0D#2S*3S
 		//System.out.println(solution("1S*2D*3T*"));
-		System.out.println("최종점수:"+solution("1S2D#3T*"));
+		System.out.println("dartResult:"+dartResult);
+		System.out.println("최종점수:"+solution(dartResult));
 		String test="123";
 		System.out.println(test.charAt(0)-48);
 		
