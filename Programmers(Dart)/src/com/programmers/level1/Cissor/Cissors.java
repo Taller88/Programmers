@@ -26,7 +26,19 @@ public class Cissors {
 			//소문자: 97~122
 			
 			//공백: 32
-			int j=s.charAt(i);
+			if(s.charAt(i)<90 && s.charAt(i)+n>90){//Z일상황
+				answer+=('A'+(s.charAt(i)+n-90));
+				System.out.println(String.valueOf(Character.toChars('A'+(s.charAt(i)+n-90))));
+			}
+			else if(s.charAt(i)<122 && s.charAt(i)+n>122){//Z일상황
+				answer+=Character.toChars('a'+(s.charAt(i)+n-122));
+			}
+			else if(s.charAt(i)==32){//Z일상황
+				answer+=' ';
+			}else {
+				answer+=Character.toChars(s.charAt(i)+n-90);
+					
+			}
 			
 		}//for
 		
@@ -37,9 +49,10 @@ public class Cissors {
 	
 	public static void main(String[] args) {
 		String a="Zsdv";
-		System.out.println(a.charAt(0)+0);
+		System.out.println(solution(a, 5));
 		
 		
+		System.out.println(Character.charCount(a.charAt(0)+5));
 		
 	
 	}
