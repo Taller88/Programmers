@@ -14,47 +14,63 @@ public class Cissors {
 	s의 길이는 8000이하입니다.
 	n은 1 이상, 25이하인 자연수입니다.
 	 */
-	public static String solution(String s, int n) {
-		String answer="";
-		for(int i=0; i<s.length(); i++) {
-			//A: 65
-			//Z: 90
-			//대문자: 65~95
-			
-			//a: 97
-			//z: 122
-			//소문자: 97~122
-			
-			//공백: 32
-			if(s.charAt(i)<90 && s.charAt(i)+n>90){//Z일상황
-				answer+=('A'+(s.charAt(i)+n-90));
-				System.out.println(String.valueOf(Character.toChars('A'+(s.charAt(i)+n-90))));
-			}
-			else if(s.charAt(i)<122 && s.charAt(i)+n>122){//Z일상황
-				answer+=Character.toChars('a'+(s.charAt(i)+n-122));
-			}
-			else if(s.charAt(i)==32){//Z일상황
-				answer+=' ';
-			}else {
-				answer+=Character.toChars(s.charAt(i)+n-90);
-					
-			}
-			
-		}//for
-		
-		
-		
-		return answer;
-	}
+	
 	
 	public static void main(String[] args) {
 		String a="Zsdv";
 		System.out.println(solution(a, 5));
 		
 		
-		System.out.println(Character.charCount(a.charAt(0)+5));
+		System.out.println("what: "+(char)('a'+5));
+		
+		System.out.println('z'+0);
+		System.out.println('Z'+0);
+		
 		
 	
 	}
+
+	  public static String solution(String s, int n) {
+		 	String answer="";
+				for(int i=0; i<s.length(); i++) {
+					//A: 65
+					//Z: 90
+					//대문자: 65~95
+					
+					//a: 97
+					//z: 122
+					//소문자: 97~122
+					
+					//공백: 32
+					if(s.charAt(i)>=65 && s.charAt(i)<=90) {//대문자
+						if(s.charAt(i)+n>90) {//더한 값이 Z보다 큰경우
+							answer+=(char)('A'+s.charAt(i)+n-90-1);
+						}else {
+							answer+=(char)(s.charAt(i)+n);
+						}
+						
+						
+					}else if(s.charAt(i)>=97 && s.charAt(i)<=122)  {//소문자
+						
+						
+						if(s.charAt(i)+n>122) {//더한 값이 Z보다 큰경우
+							answer+=(char)('a'+s.charAt(i)+n-122-1);
+						}else {
+							answer+=(char)(s.charAt(i)+n);
+						}
+						
+					}else if(s.charAt(i)==' ') {//띄어쓰기
+						answer+=' ';
+					}
+					
+					
+					
+					
+				}//for
+				
+				
+				
+				return answer;
+			}
 
 }
