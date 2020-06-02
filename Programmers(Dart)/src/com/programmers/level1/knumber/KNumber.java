@@ -3,7 +3,6 @@ package com.programmers.level1.knumber;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 /**
  * 지려버린 풀이
