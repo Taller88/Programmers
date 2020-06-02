@@ -10,7 +10,8 @@
   * 다트
   * K번째 수
 ## LEVEL2
-  * Comming Soon....
-  
+  * 다리를 지나는 트럭(Queue)
+  * 기능개발(Queue)
+
 ## LEVEL3
   * Comming Soon....
