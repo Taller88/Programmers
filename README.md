@@ -13,6 +13,7 @@
   * 송전탑(Stack)
   * 다리를 지나는 트럭(Queue)
   * 기능개발(Queue)
+  * 프린터(Priority Queue)
 
 ## LEVEL3
   * Comming Soon....
