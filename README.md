@@ -14,6 +14,6 @@
   * 다리를 지나는 트럭(Queue)
   * 기능개발(Queue)
   * 프린터(Priority Queue)
-
+  * 주식가격(Python 코드 참고 - Stack X)
 ## LEVEL3
   * Comming Soon....
