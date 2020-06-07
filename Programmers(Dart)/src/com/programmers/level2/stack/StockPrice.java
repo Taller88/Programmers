@@ -1,6 +1,25 @@
 package com.programmers.level2.stack;
-
+import java.util.*;
 public class StockPrice {
+	
+	public static int[] stackSolution(int []prices) {
+		int[] answer=new int[prices.length];
+		Queue<Integer> q=new LinkedList<>();
+		for(int i=0; i<prices.length; i++) {
+			q.add(prices[i]);
+		}
+		while(!q.isEmpty()) {
+			for(int i=0; i<prices.length; i++) {
+				if(q.peek()>prices[i]) {
+					
+				}
+			}
+		}
+		
+		
+		return null;
+	}
+	
 	/**
 	 * 종한씨 Python 코드 참고 (Stack안쓴 내용)
 	 * @param prices
