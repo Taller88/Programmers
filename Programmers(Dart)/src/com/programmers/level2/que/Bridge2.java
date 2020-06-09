@@ -11,6 +11,9 @@ class Bridge2 {
             this.entry=entry;
         }
     }
+    
+    
+    
     public int solution(int bridge_length, int weight, int[] truck_weights) {
         Queue<Truck> waiting=new LinkedList<Truck>();
         Queue<Truck> bridge=new LinkedList<Truck>();
