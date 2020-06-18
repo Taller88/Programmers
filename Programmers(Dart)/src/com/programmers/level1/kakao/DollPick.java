@@ -15,6 +15,7 @@ public class DollPick {
 	                }
 	            }
 	            qList.add(stk);
+	            String tmp="";
 	        }
 	        for(int i=0; i<moves.length; i++){
 	            Stack<Integer> tmp=qList.get(moves[i]-1);

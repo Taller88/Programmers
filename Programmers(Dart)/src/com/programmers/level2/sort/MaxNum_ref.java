@@ -13,6 +13,7 @@ public class MaxNum_ref {
 	            arr[i] = (String.valueOf(numbers[i]));
 	        }
 	        
+	        
 	        //배열 정렬, 정렬 규칙으로는 2개를 더하여 더 큰 쪽이 우선순위가 있도록 정렬
 	        Arrays.sort(arr, new Comparator<String>() {
 	            @Override
