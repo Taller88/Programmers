@@ -25,6 +25,11 @@ public class test {
 
 			ArrayList<Integer> a=new ArrayList<>();
 			
+			String re="push 1123";
+			String[] qq= re.split(" ");
+			System.out.println(qq[0]);
+			System.out.println(Integer.parseInt(qq[1])+1);
+			
 	}
 
 }
