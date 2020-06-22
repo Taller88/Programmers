@@ -9,6 +9,9 @@ public class test {
 			System.out.println(tmp[i]);
 			
 		}
+		
+		String a="011";
+		System.out.println("tasd: "+Integer.parseInt(a));
 		System.out.println(tmp.length);
 		System.out.println(t.contains("|"));
 		System.out.println(9+""+1+""+8);
