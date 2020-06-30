@@ -1,19 +1,19 @@
 import java.util.*;
-
+import java.io.*;
 public class test {
 
-	public static void main(String[] args) {
-		String t="| 16";
-		String []tmp=t.split(" ");
-		for(int i=0; i<tmp.length; i++) {
-			System.out.println(tmp[i]);
-			
-		}
-		
-		String a="011";
-		System.out.println("tasd: "+Integer.parseInt(a));
-		System.out.println(tmp.length);
-		System.out.println(t.contains("|"));
-		System.out.println(9+""+1+""+8);
+	public static void main(String[] args) throws Exception{
+		 BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	        BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
+	        String abc="abcdefghijklmnopqrstuvwxyz";
+         String arr[]=abc.split("");
+         String tmp=br.readLine();
+         String tArr[]=tmp.split("");
+          for(int i=0; i<arr.length; i++){
+                 bw.write(tmp.indexOf(arr[i])+" ");
+            
+          
+         }
+	        bw.flush();
 	}
 }
