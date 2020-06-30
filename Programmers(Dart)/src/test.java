@@ -15,5 +15,9 @@ public class test {
           
          }
 	        bw.flush();
+	        
+	        String a="";
+	        a+="asdasd";
+	        System.out.println(a);
 	}
 }
