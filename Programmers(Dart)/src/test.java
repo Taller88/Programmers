@@ -4,13 +4,8 @@ public class test {
 
 	
 	public static void main(String[] args) throws Exception{
-		ArrayList<Integer> list=new ArrayList<>();
-		Scanner sc=new Scanner(System.in);
-		Stack<Integer> stk=new Stack<>();
-		Collections.sort(list);
-			list.add(1);
-			ArrayList<Integer> list2=(ArrayList<Integer>) list.clone();
-			
-			System.out.println(list2.get(0));
+		int[][] arr= {{0,3},{1,9},{2,6}};
+		Arrays.sort(arr);
+		
 	}
 }

@@ -31,8 +31,8 @@ public class Travel {
 		return;
 	}
 	public static void main(String []args) {
-		String[][]tickets= {{"ICN", "SFO"}, {"ICN", "ATL"}, {"SFO", "ATL"}, {"ATL", "ICN"}, {"ATL","SFO"}};
-//		String[][]tickets={{"ICN", "JFK"}, {"HND", "IAD"}, {"JFK", "HND"}};
+//		String[][]tickets= {{"ICN", "SFO"}, {"ICN", "ATL"}, {"SFO", "ATL"}, {"ATL", "ICN"}, {"ATL","SFO"}};
+		String[][]tickets={{"ICN", "JFK"}, {"HND", "IAD"}, {"JFK", "HND"}};
 		String[] arr=solution(tickets);
 		for(int i=0; i<arr.length; i++) {
 			System.out.println(arr[i]);
