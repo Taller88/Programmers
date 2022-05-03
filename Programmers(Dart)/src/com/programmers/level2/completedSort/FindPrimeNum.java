@@ -3,8 +3,6 @@ package com.programmers.level2.completedSort;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import com.sun.org.apache.regexp.internal.recompile;
-
 public class FindPrimeNum {
 	static String[] arr;
 	static HashSet<Integer> set=new HashSet<>();

@@ -32,11 +32,11 @@ class Solution {
                  }
         for(int i=0; i<products.length; i++){
              
-            if(products[i][0]-products[i][2]*2>=0){//매대에 올린 상품
+            if(products[i][0]-products[i][2]*2>=0){//留ㅻ��뿉 �삱由� �긽�뭹
                 
-                tmp[i][0]=tmp[i][0]-tmp[i][2]*2;//재고량 바꿈
+                tmp[i][0]=tmp[i][0]-tmp[i][2]*2;//�옱怨좊웾 諛붽퓞
                 int notMade=0;               
-                // for(int j=0; j<products.length; j++){//매대에 올리지 않은 상품
+                // for(int j=0; j<products.length; j++){//留ㅻ��뿉 �삱由ъ� �븡�� �긽�뭹
                 //     if(i!=j){
                 //         if(tmp[j][0]-tmp[j][2]>=0){
                 //             notMade+=tmp[j][1]*tmp[j][2];
@@ -54,36 +54,3 @@ class Solution {
 }
 
 
-
-
-
-
-
-
-
-//////////////////////////////////////////////////
-
-class Solution {
-    static int target=0;
-    static int[] cardArr;
-    static int answer=Integer.MAX_VALUE;
-    public int solution(int num, int[] cards) {
-        target=num;
-        cardArr=cards;
-        dfs(0,0);
-        
-        return answer==Integer.MAX_VALUE?-1:answer;
-    }
-    public static void dfs(int cnt, int sum){
-        if(sum==target){
-            answer=Math.min(answer,cnt);
-            return;
-        }
-        
-        for(int i=0; i<cardArr.length; i++){
-            if(sum+cardArr[i]<=target){
-                dfs(cnt+1, sum+cardArr[i]);
-            }
-        }
-    }
-}
