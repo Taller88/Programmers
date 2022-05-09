@@ -16,6 +16,51 @@ public class NewIdRecommend {
 	 * @param new_id
 	 * @return
 	 */
+	public String solution2(String new_id) {
+        String answer = new_id.toLowerCase();
+        char[]arr = answer.toCharArray();
+        		
+        String temp = "";
+        for(int i = 0; i<arr.length; i++) {
+        	if(!((arr[i]>=97 &&arr[i]<=122)||arr[i]==77 ||arr[i]==46 ||arr[i]==95)) {
+        		arr[i] = ' ';
+        	}
+        }
+        
+        answer = "";
+        for(int i = 0; i<arr.length; i++) {
+        	if(arr[i]!= ' ') {
+            	answer+=arr[i]+"";        		
+        	}
+        }
+        if(answer == "") {
+        	answer = "a";
+        }
+        while(answer.contains("..")) {
+        	answer = answer.replace("..", ".");
+        }
+        
+        if(answer.startsWith(".")) {
+        	answer = answer.substring(1);	
+        }
+        if(answer.endsWith(".")) {
+    		answer = answer.substring(0, answer.length()-1);
+    	}
+              
+        if(answer.length()>=16) {
+        	answer = answer.substring(0, 15);
+            if(answer.endsWith(".")) {
+        		answer = answer.substring(0, answer.length()-1);
+        	}
+        	
+        }
+        
+        while(answer.length()<3) {
+        	answer+=answer.charAt(answer.length()-1);
+        }
+
+        return answer;
+    }
 	public String solution(String new_id) {
         String answer = new_id.toLowerCase(); // 1단계
 
