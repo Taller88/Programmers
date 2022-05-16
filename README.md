@@ -24,7 +24,8 @@
   * 기능개발(Queue)
   * 프린터(Priority Queue)
   * 주식가격(Python 코드 참고 - Stack X)
-  * 문자열 
+  * 문자열 압축
+  
 ## LEVEL3
   * 없어진 기록찾기(SQL)
   * 디스크 컨트롤러
