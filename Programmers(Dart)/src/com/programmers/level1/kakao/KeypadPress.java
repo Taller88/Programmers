@@ -49,6 +49,7 @@ public class KeypadPress {
         }
         return answer;
     }
+
 	public int getDistance(int from, int to) {
 		if(from == 0) {
 			from =11;
