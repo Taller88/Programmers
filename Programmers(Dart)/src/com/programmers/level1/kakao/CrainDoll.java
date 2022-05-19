@@ -15,11 +15,10 @@ public class CrainDoll {
 
 	}
 
-	public int solution(int[][] board2, int[] moves) {
+	public int solution(int[][] board, int[] moves) {
         int answer = 0;
         Stack<Integer> stack = new Stack();
         int before = 0;
-        int[][] board = board2;
         for(int i = 0; i<moves.length; i++) {
         	int idx =moves[i]-1;
         	for(int j=0; j<board[idx].length; j++) {
