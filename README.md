@@ -25,6 +25,7 @@
   * 프린터(Priority Queue)
   * 주식가격(Python 코드 참고 - Stack X)
   * 문자열 압축
+  * 오픈채팅방
   
 ## LEVEL3
   * 없어진 기록찾기(SQL)
