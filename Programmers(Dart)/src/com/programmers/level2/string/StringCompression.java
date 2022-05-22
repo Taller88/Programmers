@@ -3,43 +3,48 @@ package com.programmers.level2.string;
 public class StringCompression {
 
 	public int solution(String s) {
-		System.out.println("s: "+ s);
-        int answer = 0;
-        String result = "";
-        for(int i = 1; i<s.length()/2; i++) {// i는 잘라서 비교할 문자열 길이
-        	String target = s.substring(0,i);// a
-        	String temp = "";
-        	int cnt = 1;
-        	String str = "";
-        	System.out.println("target: "+ target);
-        	for(int j = i; j<s.length(); j+=i) {// j는 문자열 인덱스?
-        		if(i+j>s.length()) {
-        			break;
-        		}
-        		temp = s.substring(j, i+j);
-        		System.out.println("target: "+target+" temp: "+temp);
-        		if(target.equals(temp)) {
-        			cnt++;
-        		}else if(cnt >1){
-        			result += cnt+target;
-        			cnt = 1;
-        			target = temp;
-//        			j+=i;
-        		}else {
-        			result += temp;
-        			cnt = 1;
-        			target =temp;
-        		}
-        	}
-        	
+		int answer = s.length();
+        
+        for(int i=1; i<=s.length()/2; i++) {
+        	int result = compression(s, i);
+        	answer = Math.min(answer, result);
         }
-        System.out.println(result);
         return answer;
     }
 	
+	public static int compression(String s, int compression) {
+		String result = "";
+		int idx = 0;
+		int cnt = 1;
+		String cur ="";
+		String target = s.substring(0, compression);
+		for(int i=compression; i<=s.length(); i+=compression) {
+			if(i+compression>s.length()) {
+				cur = s.substring(i, s.length());				
+			}else {
+				cur = s.substring(i, i+compression);
+				
+			}
+			
+			if(cur.equals(target)) {
+				cnt++;
+			}else {
+				result  += cnt==1? target:cnt+target;
+				target = cur;
+				cnt = 1;
+			}
+		}
+		if(compression != target.length()) {
+			result += target;
+		}
+		return result.length();
+		
+	}
 	public static void main(String[]args) {
 		StringCompression sc = new StringCompression();
-//		sc.solution("abcabcabcabcdededededede");
-		sc.solution("aabbaccc");
+		sc.solution("abcabcabcabcdededededede");
+//		sc.solution("ababcdcdababcdcd");
+		//abcabcabcabc6de : 2
+		
 	}
 }

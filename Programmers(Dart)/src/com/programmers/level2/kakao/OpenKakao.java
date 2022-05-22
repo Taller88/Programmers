@@ -26,9 +26,7 @@ public class OpenKakao {
 
 	        		enterMap.put(id, nick);
 	        	}else{// Leave
-
 	        		arr.add(id+"님이 나갔습니다.");   		
-	        		
 	        	}
 	        	
 	        }
