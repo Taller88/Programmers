@@ -1,79 +1,108 @@
 package com.programmers.level2.kakao;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class DistanceFind {
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		DistanceFind df = new DistanceFind();
-		String[][] places = {{"POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"}, {"POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"}, {"PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"}, {"OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"}, {"PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"}};
+		String[][] places = {
+							{"POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"}, 
+							{"POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"}, 
+							{"PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"}, 
+							{"OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"}, 
+							{"PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"}
+							};
+		System.out.println("init!");
 		int[] answer = df.solution(places);
-		for(int i = 0; i<answer.length; i++) {
-			System.out.println(answer[i]);
+		String result = "";
+		for(int i=0; i<answer.length; i++) {
+			result += answer[i]+" ";
 		}
-		
+		System.out.println("result: "+result);
 	}
-	
-	static int[] result = null;
+	static class Dot{
+		int x,y,distance;
+		public Dot() {
+			// TODO Auto-generated constructor stub
+		}
+		public Dot(int x, int y, int distance) {
+			this.x = x;
+			this.y = y;
+			this.distance = distance;
+		}
+	}
+	static Queue<Dot> q = null;
 	public int[] solution(String[][] places) {
-	     int[] answer = new int[places.length];
-	     result = new int[places.length];
-	     Arrays.fill(result, 1);
-	     
-	     for(int i = 0; i<places.length; i++) {
-	    	 char[][] table = new char[5][5];
-	    	 for(int j=0; j<table.length; j++) {
-	    		 char[] temp = places[i][j].toCharArray();
-		    	 table[j] = Arrays.copyOfRange(temp, 0, temp.length) ;
-	    	 }
-	    	 for(int j=0; j<table.length; j++) {
-	    		 for(int z=0; z<table[j].length; z++) {
-	    			 findDistance(table,j,z,0,j);
-//	    			 if(table[j][z]=='P') {
-//	    		    	 if(!) {
-//	    		    		 break;
-//	    		    	 }
-//	    			 }
-	    			 
-	    		 }
-	    	 }
-	     }
-	     answer = Arrays.copyOfRange(result, 0, result.length);
-	     return answer;
-	}
-
-	static int[] xArrow = {0,0,-1,1};
-	static int[] yArrow = {1,-1,0,0};
-	
-	private boolean checkRange(int x) {
-		if(x>=0 && x<5) {
-			return true;			
-		}
-		return false;
-		
-	}
-	
-	private void findDistance(char[][] table, int x, int y, int cnt, int resultIdx) {
-		if(cnt>2) {
-			return;
-		}
-		
-		for(int i = 0; i<xArrow.length; i++) {
-			if(checkRange(x+xArrow[i]) && checkRange(y+yArrow[i])) {
-				char status = table[x+xArrow[i]][y+yArrow[i]];
-				if(status== 'P') {
-					result[resultIdx]=0;
-					return;
-				}else {
-					findDistance(table, x+xArrow[i], y+yArrow[i], cnt+1, resultIdx);
-				}				
-			}else {
-				continue;
+        int[] answer = new int[places.length];
+        for(int i=0; i<places.length; i++) {
+        	char[][] arr = new char[5][5];
+        	
+        	for(int j=0; j<places[i].length; j++) {
+        		char[] temp =places[i][j].toCharArray();
+        		for(int z=0; z<5; z++) {
+        			arr[j][z] = temp[z];
+        		}
+        	}
+        	
+        	if(checkCorrect(arr)) {
+        		answer[i] =1;
+        	}else {
+        		answer[i] = 0;
+        	}
+        	System.out.println("=======================");
+        }
+        return answer;
+    }
+	private boolean checkCorrect(char[][] arr) {
+		for(int i=0; i<arr.length; i++) {
+			for(int j=0; j<arr[i].length; j++) {
+				if(arr[i][j]=='P') {
+					boolean check  = bfs(arr, i,j);
+					System.out.println("result: "+ check);
+					if(!check) {
+						return false;
+					}
+				}
 			}
 		}
 		
-		return;
+		return true;
+		
 	}
 	
+	private boolean bfs(char[][] arr, int a, int b) {
+		q = new LinkedList<>();
+		q.add(new Dot(a,b,0));
+		
+		boolean[][] visited = new boolean[5][5];
+		visited[a][b] = true;
+		int[] dx = {0,0,-1,1};
+		int[] dy = {1,-1,0,0};
+		
+		
+		while(!q.isEmpty()) {
+			Dot d = q.poll();
+			System.out.println("x: "+d.x+" y: "+ d.y+" dis: "+d.distance);
+			for(int i=0; i<4; i++) {
+				int x = d.x+dx[i];
+				int y = d.y+dy[i];
+				if(x>=0 && x<5 && y>=0 && y<5 && d.distance<3 && !visited[x][y]) {
+					System.out.println(arr[x][y]);
+					if(arr[x][y] =='P' && d.distance!=2) {
+						return false;
+					}else if(arr[x][y] =='O') {
+						q.add(new Dot(x, y, d.distance+1));
+						visited[x][y] = true;
+					}
+				}
+				
+			}
+			
+		}
+		
+		
+		return true;
+	}
 }
