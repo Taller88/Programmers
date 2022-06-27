@@ -25,7 +25,7 @@ public class Island {
 				@Override
 				public int compare(int[] o1, int[] o2) {
 					Integer a = o1[2];
-					Integer b = o1[2];
+					Integer b = o2[2];
 					return a.compareTo(b);
 				}
 			});
