@@ -31,7 +31,7 @@ public class TrangleSnail {
 				   y++;
 			   }else if(i%3==2) {
 				   x--;
-				   y--;
+				   y--; 
 			   }
 			   arr[x][y]= value++;
 			   
